@@ -1,14 +1,21 @@
-# 讀取檔案
+# 檢查檔案在不在，有的話就讀取檔案
+import os # os(operating system)：作業系統 就像電腦的政府、管理員
+
 products = []
-with open('products.csv', 'r', encoding='utf-8') as f:
-    for line in f:
-        if '商品,價格' in line :
-            continue # continue跟break一樣只能寫在迴圈裡
-                     # continue：跳到下一個迴圈的意思
-        name, price = line.strip().split(',') # 先用.strip()來除掉換行符號(\n) # 再用.split(',')來用逗點做分割
-        products.append([name, price])
+if os.path.isfile('products.csv'): # 檢查在同一資料夾裡面有沒有該檔案（相對路徑）
+    print('yeah! 找到檔案了！')
+    with open('products.csv', 'r', encoding='utf-8') as f:
+        for line in f:
+            if '商品,價格' in line :
+                continue # continue跟break一樣只能寫在迴圈裡
+                         # continue：跳到下一個迴圈的意思
+            name, price = line.strip().split(',') # 先用.strip()來除掉換行符號(\n) # 再用.split(',')來用逗點做分割
+            products.append([name, price])
         # split完的結果是一個個清單
-print(products)
+    print(products)
+else:
+    print('找不到檔案......')
+
 
 # 讓使用者輸入
 while True:
