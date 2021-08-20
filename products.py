@@ -55,6 +55,7 @@ def main():
     write_file('products.csv', products)
 
 
-main()
+if __name__ == '__main__':
+    main()
 
 # refactor(重構)：重新架構程式
