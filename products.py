@@ -2,7 +2,6 @@ import os # os(operating system)：作業系統 就像電腦的政府、管理�
 
 # 讀取檔案
 def read_file(filename): # 把原本寫死的檔名改成參數，方便後面隨時修改
-    products = []
     with open(filename, 'r', encoding='utf-8') as f:
         for line in f:
             if '商品,價格' in line :
@@ -50,6 +49,7 @@ def main():
     else:
         print('找不到檔案......')
 
+    products = []
     products = user_input(products)
     print_products(products)
     write_file('products.csv', products)
